@@ -7,19 +7,24 @@
 
 #include <avr/io.h>
 #include "LCD.h"
-#include "Keypad.h"
+#include "LM35.h"
+#include "EXT_INT.h"
 
 int main(void)
 {
     LCD_init();
-	LCD_sendstring("Hello");
+	LM35_Init();
+	LCD_sendstring("Hello LM35");
 	_delay_ms(500);
-	LCD_cmd(0x01);
-	keypad_init();
+	LCD_Clear();
+	Enable_INT0();
+	int val;
 	while(1)
 	{
-		LCD_sendletter(readKeypad());
-		_delay_ms(100);
+		val = LM35_Read(1)*2.5/10;
+		LCD_sendnumber(val);
+		_delay_ms(300);
+		LCD_Clear();
 	}
 	
 

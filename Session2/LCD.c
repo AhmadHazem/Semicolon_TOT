@@ -9,7 +9,7 @@
 
 void LCD_cmd( unsigned char cmnd )
 {
-	PORTB = ~ PORTB;
+	
 	LCD_Port = (LCD_Port & 0x0F) | (cmnd & 0xF0);/* Sending upper nibble */
 	LCD_Port &= ~ (1<<RS);		/* RS=0, command reg. */
 	LCD_Port |= (1<<EN);		/* Enable pulse */
@@ -60,4 +60,16 @@ void LCD_sendstring(const char* str)
 	{
 		LCD_sendletter(str[i]);
 	}
+}
+
+void LCD_Clear()
+{
+	LCD_cmd(0x01);
+}
+
+void LCD_sendnumber(int num)
+{
+	char str[10];
+	itoa(num,str,10);
+	LCD_sendstring(str);
 }

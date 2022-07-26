@@ -120,6 +120,12 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="EXT_INT.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="EXT_INT.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="Keypad.c">
       <SubType>compile</SubType>
     </Compile>
@@ -130,6 +136,12 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="LCD.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LM35.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="LM35.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
